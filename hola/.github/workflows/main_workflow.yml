@@ -1,0 +1,21 @@
+name: main_workflow
+on: 
+  push:
+    branches:
+      -githubActions_examples
+
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      - name: Lint Code
+        uses: github/super-linter@v3
+        env: 
+          DEFAULT_BRANCH: githubActions_example
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          LINTER_RULES_PATH: /
+          JAVASCRIPT_ES_CONFIG_FILE: .eslintrc.json
+          VALIDATE_JAVASCRIPT_ES: true
+        
