@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
+      - name: Setting node version
+        uses: actions/setup-node@v
       - name: Lint Code
         uses: github/super-linter@v3
         env: 
