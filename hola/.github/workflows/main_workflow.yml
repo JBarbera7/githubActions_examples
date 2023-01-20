@@ -2,10 +2,11 @@ name: main_workflow
 on: 
   push:
     branches:
-      -githubActions_examples
+      -nodejs_linter_job
+      -nodejs_jest_job
 
 jobs:
-  Explore-GitHub-Actions:
+  jobLinter:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
@@ -18,4 +19,12 @@ jobs:
           LINTER_RULES_PATH: /
           JAVASCRIPT_ES_CONFIG_FILE: .eslintrc.json
           VALIDATE_JAVASCRIPT_ES: true
-        
+    test-execution:
+      runs-on: ubuntu-latest
+      steps:
+        -name: Checkout Code
+        uses: actions/checkout@v2
+        -name: Run jest tests
+        run: 
+          npm install jest
+          npm test         
