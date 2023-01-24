@@ -34,4 +34,6 @@ jobs:
           -name: Hola
           env: 
             DESTINATION_PERSON: 2DAW
-          uses: actions/github-actions-hello@v1 with: who-to-greet: 'Mona the Octocat'
+          uses: actions/github-actions-hello@v1 
+          with:
+             who-to-greet: '${{ env.DESTINATION_PERSON}}'
