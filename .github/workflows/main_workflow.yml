@@ -7,7 +7,7 @@ on:
 
 jobs:
   jobLinter:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
@@ -22,7 +22,7 @@ jobs:
           JAVASCRIPT_ES_CONFIG_FILE: .eslintrc.json
           VALIDATE_JAVASCRIPT_ES: true
     test-execution:
-      runs-on: ubuntu-latest
+      runs-on: windows-latest
       steps:
         -name: Checkout Code
         uses: actions/checkout@v2
@@ -34,4 +34,4 @@ jobs:
           -name: Hola
           env: 
             DESTINATION_PERSON: 2DAW
-          uses: adeloyedeji/github-actions-hello@v1.0 with: who-to-greet: ${{ env.mascot }}
+          uses: adeloyedeji/github-actions-hello@v1.0 with: who-to-greet: 'Mona'
