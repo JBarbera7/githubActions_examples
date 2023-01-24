@@ -32,7 +32,6 @@ jobs:
           npm test        
     environment_test_execution:
       runs-on: ubuntu-latest
-        steps:
           -name: Hola
           env: 
             DESTINATION_PERSON: 2DAW
