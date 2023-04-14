@@ -41,10 +41,9 @@ jobs:
     name: environment_test_execution
     runs-on: ubuntu-latest
     steps:
-      - name: Variable
         env: 
           DESTINATION_PERSON: 2DAW 
         uses: adeloyedeji/github-actions-hello@v1.0
-          with:
+        with:
             who-to-greet: ${{ DESTINATION_PERSON }}
         
