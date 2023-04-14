@@ -42,7 +42,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: hola
+        env:
+          DESTINATION_PERSON: "2DAW"
         uses: adeloyedeji/github-actions-hello@v1.0
         with:
-            who-to-greet: 'Mona the'
+            who-to-greet: ${{ env.DESTINATION_PERSON }}
         
