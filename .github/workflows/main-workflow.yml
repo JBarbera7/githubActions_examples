@@ -3,7 +3,6 @@ on:
   push:
     branches:
       - nodejs_jest_job
-     
 jobs:
   build:
     runs-on: ubuntu-latest
