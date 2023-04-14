@@ -6,12 +6,11 @@ on:
      
 jobs:
   build:
-    name: linter-execution
     runs-on: ubuntu-latest
     strategy:
       matrix:
         node: [ 10, 12 ]
-   
+   name: linter-execution
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
