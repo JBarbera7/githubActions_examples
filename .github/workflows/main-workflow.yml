@@ -41,7 +41,8 @@ jobs:
     name: environment_test_execution
     runs-on: ubuntu-latest
     steps:
-       - uses: adeloyedeji/github-actions-hello@v1.0
+      - name: hola
+        uses: adeloyedeji/github-actions-hello@v1.0
         with:
             who-to-greet: 2DAW
         
