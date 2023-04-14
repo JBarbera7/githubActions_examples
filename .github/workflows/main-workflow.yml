@@ -42,7 +42,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: hola
-        uses: adeloyedeji/github-actions-hello@v1
+        uses: adeloyedeji/github-actions-hello@v1.0
         with:
             who-to-greet: 'Mona the'
         
