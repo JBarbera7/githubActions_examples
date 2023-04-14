@@ -7,14 +7,16 @@ jobs:
   build:
     name: linter-execution
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+      node: [10, 12]
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Setup node
         uses: actions/setup-node@v2
         with: 
-            node-version: 10 
-            node-version: 12
+            node-version: ${{ matrix.node }}
       - name: Linter execution
         uses:  github/super-linter@v4
         env: 
