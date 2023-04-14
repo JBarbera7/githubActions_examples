@@ -3,13 +3,22 @@ on:
   push:
     branches:
       - nodejs_jest_job
+     
 jobs:
   build:
     name: linter-execution
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [ 10, 12 ]
+   
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+       - name: Node ${{ matrix.node }} sample
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
       - name: Linter execution
         uses:  github/super-linter@v4
         env: 
