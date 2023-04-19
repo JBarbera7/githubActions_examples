@@ -17,7 +17,7 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
            name: my-artifact
-           path: ./dist 
+           path: /dist/index.js 
   deploy:
     name: deploy-job
     runs-on: ubuntu-latest
