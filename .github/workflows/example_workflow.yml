@@ -1,0 +1,33 @@
+name: example_workflow
+on: 
+  push:
+    branches:
+      - nodejs_environment_job
+jobs:
+  build:
+    name: build-job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Run build
+        run:
+          npm install 
+          npm run build
+      - uses: actions/upload-artifact@v3
+        with:
+           name: my-artifact
+           path: ./dist 
+    deploy:
+       name: deploy-job
+       runs-on: ubuntu-latest
+       steps:
+        - name: descarga
+        - uses: actions/download-artifact@v2
+        - name: Deploy to foo-bar.surge.sh
+        uses: dswistowski/surge-sh-action@v1
+        with:
+          domain: 'foo-bar.surge.sh'
+          project: '.'
+          login: ${{ secrets.surge_login }}
+          token: ${{ secrets.surge_token }}
