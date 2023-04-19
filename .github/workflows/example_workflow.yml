@@ -18,10 +18,10 @@ jobs:
         with:
            name: my-artifact
            path: ./dist 
-    deploy:
-       name: deploy-job
-       runs-on: ubuntu-latest
-       steps:
+    build1:
+      name: deploy-job
+      runs-on: ubuntu-latest
+      steps:
         - uses: actions/download-artifact@v2
         - name: Deploy to foo-bar.surge.sh
         uses: dswistowski/surge-sh-action@v1
