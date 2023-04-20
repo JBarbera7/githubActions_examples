@@ -33,7 +33,7 @@ jobs:
       - name: Deploy to surge.sh
         uses: dswistowski/surge-sh-action@v1
         with:
-          email: ${{ secrets.SURGE_LOGIN }}
-          password: ${{ secrets.SURGE_TOKEN }}
+          login: ${{ secrets.SURGE_LOGIN }}
+          token: ${{ secrets.SURGE_TOKEN }}
           domain: foo-bar.surge.sh
           path: ./build
