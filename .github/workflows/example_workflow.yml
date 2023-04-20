@@ -30,7 +30,7 @@ jobs:
         with:
           name: build-artifacts
 
-      - name: Deploy to surge.sh
+      - name: Deploy surge.sh
         uses: dswistowski/surge-sh-action@v1
         with:
           login: ${{ secrets.SURGE_LOGIN }}
