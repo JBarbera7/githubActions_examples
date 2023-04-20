@@ -35,5 +35,5 @@ jobs:
         with:
           login: ${{ secrets.SURGE_LOGIN }}
           token: ${{ secrets.SURGE_TOKEN }}
-          domain: foo-bar.surge.sh
-          path: ./build
+          domain: javierBarbera.surge.sh
+          project: ./build
