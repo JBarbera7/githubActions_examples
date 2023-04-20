@@ -11,14 +11,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Run build
-        run: 
+        run: |
           npm install
           npm run build
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: build-artifacts
-          path: ./build
+      
   deploy:
     needs: build
     name: deploy-job
