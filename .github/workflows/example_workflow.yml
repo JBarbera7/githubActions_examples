@@ -11,23 +11,28 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Run build
-        run:
-          npm install 
+        run: |
+          npm install
           npm run build
-      - uses: actions/upload-artifact@v3
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
         with:
-           name: my-artifact
-           path: /build/static/js/main.js
+          name: build-artifacts
+          path: ./build
   deploy:
     needs: build
     name: deploy-job
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/download-artifact@v2
-      - name: Deploy to foo-bar.surge.sh
+      - name: Download artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: build-artifacts
+
+      - name: Deploy to surge.sh
         uses: dswistowski/surge-sh-action@v1
         with:
-            domain: 'foo-bar.surge.sh'
-            project: '.'
-            login: ${{ secrets.surge_login }}
-            token: ${{ secrets.surge_token }}
+          login: ${{ secrets.SURGE_LOGIN }}
+          token: ${{ secrets.SURGE_TOKEN }}
+          domain: example-domain.surge.sh
+          path: ./build
