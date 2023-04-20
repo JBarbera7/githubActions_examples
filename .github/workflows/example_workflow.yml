@@ -2,7 +2,7 @@ name: example_workflow
 on: 
   push:
     branches:
-      - react_app_deploy
+      - react_app_debloy
 jobs:
   build:
     name: build-job
