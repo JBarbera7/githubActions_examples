@@ -14,5 +14,5 @@ jobs:
       with:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-          TELEGRAM_MESSAGE: "Hello from Github Actions"
+          TELEGRAM_MESSAGE: "Hello from Github Actions2"
       
