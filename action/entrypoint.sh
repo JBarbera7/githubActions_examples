@@ -1,3 +1,3 @@
 #!/bin/sh -l
 
-node /app/index.js "$@"
+node ./index.js "$@"
