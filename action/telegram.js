@@ -1,21 +1,17 @@
 const TelegramBot = require('node-telegram-bot-api');
 
-const token = process.env.TELEGRAM_TOKEN;
-const chatId = process.env.TELEGRAM_CHAT_ID;
+async function run() {
+  const bot = new TelegramBot(process.env['INPUT_BOT-TOKEN'], { polling: false });
+  const chatId = process.env['INPUT_CHAT-ID'];
+  const message = process.env['INPUT_MESSAGE'];
 
-console.log('token' +  token);
-console.log('id' + chatId);
+  try {
+    await bot.sendMessage(chatId, message);
+    console.log('Message sent successfully!');
+  } catch (error) {
+    console.log('Error sending message:', error);
+    process.exit(1);
+  }
+}
 
-
-
-const bot = new TelegramBot(token);
-
-
-  const message = `Workflo ejecutado correctamente tras el último commit. Saludos Javier `;
-    bot.sendMessage(chatId, message);
-  console.log('Mensaje enviado');
-
-
-
-
-
+run();

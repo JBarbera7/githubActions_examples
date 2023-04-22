@@ -1,15 +1,15 @@
-name: Telegram Message Action
-description: Envia un mensaje a Telegram
+name: 'Telegram Bot Action'
+description: 'A GitHub Action to send messages through Telegram Bot'
 inputs:
-  name:
-    description: 'Nombre a mostrar en el mensaje'
+  message:
+    description: 'The message to be sent'
     required: true
-  TELEGRAM_TOKEN:
-    description: 'Token de Telegram'
+  bot-token:
+    description: 'Telegram bot token'
     required: true
-  TELEGRAM_CHAT_ID:
-    description: 'ID del chat de Telegram'
+  chat-id:
+    description: 'Telegram chat ID'
     required: true
 runs:
-  using: 'docker'
-  image: "Dockerfile"
+  using: 'node12'
+  main: 'telegram.js'
