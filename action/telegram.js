@@ -1,13 +1,12 @@
 const TelegramBot = require('node-telegram-bot-api');
 
-const token = process.env.TELEGRAM_TOKEN;
-const chatId = process.env.TELEGRAM_CHAT_ID;
 
-const bot = new TelegramBot(token);
+
+const bot = new TelegramBot(TELEGRAM_TOKEN, { polling: true });
 
 
   const message = `Workflow ejecutado correctamente tras el último commit. Saludos Javier `;
-    bot.sendMessage(chatId, message);
+    bot.sendMessage(TELEGRAM_CHAT_ID, message);
   console.log('Mensaje enviado');
 
 
