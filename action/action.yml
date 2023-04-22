@@ -11,9 +11,5 @@ inputs:
     description: 'ID del chat de Telegram'
     required: true
 runs:
-  using: 'docker'
-  image: "Dockerfile"
-  env:
-    NAME: ${{ inputs.name }}
-    TELEGRAM_BOT_TOKEN: ${{ inputs.TELEGRAM_BOT_TOKEN }}
-    TELEGRAM_CHAT_ID: ${{ inputs.TELEGRAM_CHAT_ID }}
+  using: 'node12'
+  main: 'telegram.js'
