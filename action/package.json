@@ -1,7 +1,0 @@
-{
-  "name": "telegram-send-action",
-  "version": "1.0.0",
-  "description": "Github Action to send messages to Telegram using node-telegram-bot-api",
-  "author": "Your Name",
-  "license": "MIT"
-}

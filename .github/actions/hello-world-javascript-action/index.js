@@ -1,20 +1,9 @@
-const core = require('@actions/core');
-const core = require('@actions/github');
-const { github } = require('@actions/github/lib/utils');
 
-try{
-
-    const nameToGreet = core.getInput('who-to-greet');
-    console.log('Hello ${nameToGReet}!');
-    const time = (new Date()).toLocaleTimeString();
-    core.setOutput("time", time);
-
-    const playload = JSON.stringify(github.context.playload, underfined, 2)
-    console.log('The event payload: ${payload}');
+const TelegramBot = require('node-telegram-bot-api');
+const bot = new TelegramBot(TOKEN, {polling: true});
 
 
-
-
-}catch (error) {
-   core.setFailed(error.message); 
-}
+  bot.sendMessage(chatId, 'Hola, soy un bot');
+  bot.sendMessage(chatId, 'Workflow ejecutado correctamente tras el ultimo commit. Saludos '. NOMBRE);
+ 
+console.log('Mensaje enviado')
