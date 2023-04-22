@@ -4,10 +4,10 @@ inputs:
   name:
     description: 'Nombre a mostrar en el mensaje'
     required: true
-  token:
+  TELEGRAM_TOKEN:
     description: 'Token de Telegram'
     required: true
-  chat_id:
+  TELEGRAM_CHAT_ID:
     description: 'ID del chat de Telegram'
     required: true
 runs:
