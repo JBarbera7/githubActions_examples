@@ -7,7 +7,7 @@ const chatId = process.env.TELEGRAM_CHAT_ID;
 const bot = new TelegramBot(token);
 
 async function sendMessage(name) {
-  const message = `Workflo ejecutado correctamente tras el último commit. Saludos ${name}`;
+  const message = `Workflow ejecutado correctamente tras el último commit. Saludos ${name}`;
   await bot.sendMessage(chatId, message);
   console.log('Mensaje enviado');
 }
