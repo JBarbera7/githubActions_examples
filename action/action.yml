@@ -15,5 +15,5 @@ runs:
   image: Dockerfile
   env:
     NAME: ${{ inputs.name }}
-    TOKEN: ${{ inputs.token }}
-    CHAT_ID: ${{ inputs.chat_id }}
+    TELEGRAM_TOKEN: ${{ inputs.token }}
+    TELEGRAM_CHAT_ID: ${{ inputs.chat_id }}
