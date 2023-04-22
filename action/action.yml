@@ -2,13 +2,13 @@ name: Telegram Message Action
 description: Envia un mensaje a Telegram
 inputs:
   name:
-    description: 'Nombre a mostrar en el mensaje'
+    description: 'Name of the person to include in the message'
     required: true
   token:
-    description: 'Token de Telegram'
+    description: 'Telegram bot token'
     required: true
   chat_id:
-    description: 'ID del chat de Telegram'
+    description: 'Telegram chat ID'
     required: true
 runs:
   using: 'node12'
