@@ -12,8 +12,8 @@ inputs:
     required: true
 runs:
   using: 'docker'
-  image: Dockerfile
+  image: "Dockerfile"
   env:
-    name: ${{ inputs.name }}
-    TELEGRAM_TOKEN: ${{ inputs.token }}
-    TELEGRAM_CHAT_ID: ${{ inputs.chat_id }}
+    NAME: ${{ inputs.name }}
+    TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+    TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
