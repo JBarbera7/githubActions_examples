@@ -4,11 +4,11 @@ inputs:
   name:
     description: 'Name of the person to include in the message'
     required: true
-  TELEGRAM_TOKEN:
+  telegram_token:
     description: 'Telegram bot token'
     required: true
     
-  TELEGRAM_CHAT_ID:
+  telegram_chat_id:
     description: 'Telegram chat ID'
     required: true
     
