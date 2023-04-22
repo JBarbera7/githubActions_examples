@@ -1,0 +1,13 @@
+name: 'Send Telegram Message'
+description: 'Sends a message to a Telegram chat using node-telegram-bot-api'
+inputs:
+  who-to-greet:
+    description: 'Telegram bot token'
+    required: true
+    default: 'World'
+outputs:
+    time:
+      description: 'The time we greeted you'
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
