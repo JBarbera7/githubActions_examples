@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: 'Send Telegram Message'
-      uses: './action'
+      uses: ./action
       with:
         message: 'Hello, World!'
         bot-token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
