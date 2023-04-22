@@ -11,10 +11,5 @@ inputs:
     description: 'ID del chat de Telegram'
     required: true
 runs:
-  using: "node12"
-  main: "telegram.js"
-env:
-  NAME: ${{ inputs.name }}
-  TELEGRAM_TOKEN: ${{ inputs.TELEGRAM_TOKEN }}
-  TELEGRAM_CHAT_ID: ${{ inputs.TELEGRAM_CHAT_ID }}
- 
+  using: 'node12'
+  main: 'telegram.js'
