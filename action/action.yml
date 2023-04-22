@@ -4,14 +4,14 @@ inputs:
   name:
     description: 'Name of the person to include in the message'
     required: true
-  token:
+  TELEGRAM_TOKEN:
     description: 'Telegram bot token'
     required: true
-    default: ${{ secrets.TELEGRAM_TOKEN }}
-  chat_id:
+    
+  TELEGRAM_CHAT_ID:
     description: 'Telegram chat ID'
     required: true
-    default: ${{ secrets.TELEGRAM_CHAT_ID }}
+    
 runs:
   using: 'node12'
   main: 'telegram.js'
