@@ -1,14 +1,20 @@
-name: 'Telegram Message'
+name: Telegram Message Action
 
-on: [push]
+on:
+  push:
+    branches:
+      - send_telegram_action
 
 jobs:
-  send-message:
+  envio_mensaje:
     runs-on: ubuntu-latest
     steps:
-    - name: 'Send Telegram Message'
-      uses: ./action
-      with:
-        message: 'Hello, World!'
-        bot-token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-        chat-id: ${{ secrets.TELEGRAM_CHAT_ID }}
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Send Telegram Message
+        uses: ./action
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        with:
+          name: Javier
