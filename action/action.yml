@@ -1,3 +1,5 @@
+name: Readme modify
+description: Modifica el readme
 inputs:
   frase_positiva:
     description: 'Positive phrase to be displayed in the meme'
