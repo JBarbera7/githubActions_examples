@@ -1,4 +1,4 @@
-const fs = require('fs');
+const fs = require('fs').promises;
 const memeGenerator = require('meme-generator');
 
 function addMemeToReadme(frase_positiva, frase_negativa, resultado_tests) {
