@@ -1,8 +1,9 @@
 {
-
+  "type": "module",
   "dependencies": {
     "fs": "^0.0.1-security",
     "meme-generator": "^0.1.0"
+    
   }
 
 }
