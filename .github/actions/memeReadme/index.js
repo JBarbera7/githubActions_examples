@@ -12,7 +12,7 @@ async function main() {
         const URL = `https://api.memegen.link/images/buzz/memes/memes_everywhere.gif`;
 
         const old_readme = await fs.readFile('./OldREADME.md', 'utf8');
-        const new_readme = old_readme + `<img src="${URL}" />`;
+        const new_readme = old_readme + `<img src="https://api.memegen.link/images/buzz/memes/memes_everywhere.gif" />`;
         
         await fs.writeFile('./README.md', new_readme);
         process.exit(0);
