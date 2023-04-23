@@ -1,24 +1,37 @@
-const core = require('@actions/core');
-const fs = require('fs').promises;
+const fs = require('fs');
+const { MemeGenerator } = require('meme-generator');
 
-async function main() {
+const frase_positiva = "Los tests han funcionado y lo sabes";
+const frase_negativa = "Los tests han fallado y lo sabes";
+const resultado_tests = true; // Ejemplo, cambiar a false para probar el resultado negativo
 
-    try {
-        const success_msg = core.getInput('frase_positiva').split(' ').join('_');
-        const error_msg = core.getInput('frase_negativa').split(' ').join('_');
-        const res = core.getInput('resultado_tests');
+const memeTexto = resultado_tests ? frase_positiva : frase_negativa;
 
-        const img = res === 'success' ? 'stonks' : 'sarcasticbear';
-        const URL = `https://api.memegen.link/images/${img}/${res === 'success' ? success_msg : error_msg}.png`;
-
-        const old_readme = await fs.readFile('./readme.md', 'utf8');
-        const new_readme = old_readme + `<img src="${URL}" />`;
+// Crear el meme con meme-generator
+const memeGenerator = new MemeGenerator();
+memeGenerator.generateMeme('./ejemplo.jpg', memeTexto)
+  .then((memeBuffer) => {
+    // Leer el contenido actual del archivo readme.md
+    fs.readFile('./readme.md', 'utf8', (err, data) => {
+      if (err) {
+        console.error(err);
+        return;
+      }
+      
+      // Agregar el meme al contenido
+      const nuevoContenido = data + `\n\n![Meme generado aleatoriamente](${memeBuffer.toString('base64')})`;
+      
+      // Escribir el contenido modificado en el archivo
+      fs.writeFile('./readme.md', nuevoContenido, (err) => {
+        if (err) {
+          console.error(err);
+          return;
+        }
         
-        await fs.writeFile('./readme.md', new_readme);
-        process.exit(0);
-    } catch (error) {
-        core.setFailed(error);
-    }
-}
-
-main();
+        console.log('Meme añadido al readme');
+      });
+    });
+  })
+  .catch((err) => {
+    console.error(err);
+  });
