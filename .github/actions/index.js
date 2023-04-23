@@ -1,27 +1,29 @@
 const fs = require('fs');
+const core = require('@actions/core');
 
 
-const frase_positiva = "Los tests han funcionado y lo sabes";
-const frase_negativa = "Los tests han fallado y lo sabes";
-const resultado_tests = true; // Cambia esto para simular diferentes resultados de los tests
 
-let texto = frase_negativa;
-if (resultado_tests) {
-  texto = frase_positiva;
+async function main() {
+
+  try {
+      const success_msg = core.getInput('frase_positiva').split(' ').join('_');
+      const error_msg = core.getInput('frase_negativa').split(' ').join('_');
+      const res = core.getInput('resultado_tests');
+
+      const img = res === 'success' ? 'stonks' : 'sarcasticbear';
+      const URL = `https://memegen.link/images/buzz/mocking-buzz.png`;
+
+      const old_readme = await fs.readFile('./OldREADME.md', 'utf8');
+      const new_readme = old_readme + `<img src="${URL}" />`;
+      
+      await fs.writeFile('./README.md', new_readme);
+      process.exit(0);
+  } catch (error) {
+      core.setFailed(error);
+  }
 }
 
-generateMeme({
-  imageUrl: 'https://memegen.link/images/buzz/mocking-buzz.png', // Cambia esto para utilizar una imagen diferente
-  text: texto
-}).then((buffer) => {
-  fs.appendFile('README.md', `\n\n![Meme](data:image/png;base64,${buffer.toString('base64')})\n`, function (err) {
-    if (err) throw err;
-    console.log('Meme añadido al readme');
-  });
-}).catch((error) => {
-  console.log(error);
-});
-
+main();
 
 
 
