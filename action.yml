@@ -16,5 +16,5 @@ outputs:
     description: 'Confirmation message that the meme has been added to the README'
 
 runs:
-  using: 'node12'
+  using: 'node16'
   main: 'testmemes.js'
