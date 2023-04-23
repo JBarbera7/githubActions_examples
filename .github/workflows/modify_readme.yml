@@ -18,7 +18,7 @@ jobs:
     needs: test-job
     steps:
       - uses: actions/checkout@v2
-      - uses: ./.github/actions
+      - uses: ./.github/actions/memeReadme
         with:
           frase_positiva: "Muy bien!/Los tests funcionaron correctamente!"
           frase_negativa: "Oh no!/Los tests no funcionan bien"
@@ -26,7 +26,7 @@ jobs:
       - uses: EndBug/add-and-commit@v9
         with:
           add: "."
-          author_name: "Javier Barbera Aliaga"
-          author_email: "javibarberaaliaga@gmail.com"
+          author_name: "Salva Muñoz Úbeda"
+          author_email: "ubedasalmu@gmail.com"
           message: "Meme updated"
           push: true
