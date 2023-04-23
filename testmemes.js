@@ -29,7 +29,7 @@ async function generateMeme(positivePhrase, negativePhrase, testResult) {
   // Escribir el archivo README.md modificado
   fs.writeFileSync('README.md', newReadme);
 
-  console.log('Meme añadido al readme');
+  console.log('Meme añadido al readme2');
 }
 
 module.exports = generateMeme;
