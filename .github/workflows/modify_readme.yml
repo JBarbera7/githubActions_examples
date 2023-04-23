@@ -1,26 +1,36 @@
-name: modify_readme
+name: main_workflow 
 on: 
   push:
-   branches:
-    - github_action_readme
+    branches:
+      - github_action_readme
 jobs:
-  test-job:
+ 
+  build:
+    name: test-execution
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Run tests
-        run: npm install jest && npm test
-        working-directory: ./test
-  modify-job:
+      - name: Run jest test
+        run:
+          npm install jest 
+          npm test  
+ 
+  add-meme:
+    needs: build
     runs-on: ubuntu-latest
-    if: always()
-    needs: test-job
     steps:
       - uses: actions/checkout@v2
-      - uses: ./.github/actions/memeReadme
+      - name: Add Meme to README
+        uses: ./
         with:
-          frase_positiva: "Muy bien!/Los tests funcionaron correctamente!"
-          frase_negativa: "Oh no!/Los tests no funcionan bien"
-          resultado_tests: ${{ needs.test-job.result }}
-   
+          frase_positiva: "Los tests han funcionado y lo sabes"
+          frase_negativa: "Los tests han fallado y lo sabes"
+          resultado_tests: ${{ job.status }}
+      - name: Commit Changes
+        run: |
+          git config --global user.email "javibarberaaliaga@gmail.com"
+          git config --global user.name "JBarbera7"
+          git commit -am "Add meme to README"
+          git push
+        

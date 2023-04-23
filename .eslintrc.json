@@ -1,0 +1,17 @@
+{
+  "extends": "standard",
+  "rules": {
+    "semi": [2, "always"],
+    "quotes": ["error", "double"],
+    "func-call-spacing": "off",
+    "indent": "off"
+    
+  },
+
+  "env": {
+    "jest": true
+}
+ 
+}
+
+
