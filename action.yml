@@ -17,4 +17,4 @@ outputs:
 
 runs:
   using: 'node16'
-  main: 'testmemes.js'
+  main: 'testmemes.mjs'
