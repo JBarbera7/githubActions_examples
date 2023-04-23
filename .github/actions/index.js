@@ -9,12 +9,12 @@ async function main() {
         const res = core.getInput('resultado_tests');
 
         const img = res === 'success' ? 'stonks' : 'sarcasticbear';
-        const URL = `https://api.memegen.link/images/buzz/memes/memes_everywhere.gif`;
+        const URL = `https://api.memegen.link/images/${img}/${res === 'success' ? success_msg : error_msg}.png`;
 
-        const old_readme = await fs.readFile('./OldREADME.md', 'utf8');
-        const new_readme = old_readme + `<img src="https://api.memegen.link/images/buzz/memes/memes_everywhere.gif" />`;
+      
+        const new_readme = old_readme + `<img src="${URL}" />`;
         
-        await fs.writeFile('./README.md', new_readme);
+        fs.writeFile('./README.md', new_readme);
         process.exit(0);
     } catch (error) {
         core.setFailed(error);
