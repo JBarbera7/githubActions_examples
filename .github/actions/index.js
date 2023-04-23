@@ -8,11 +8,11 @@ async function main() {
         const error_msg = core.getInput('frase_negativa').split(' ').join('_');
         const res = core.getInput('resultado_tests');
 
-        const img = res === 'success' ? 'stonks' : 'sarcasticbea';
+        const img = res === 'success' ? 'stonks' : 'sarcasticbear';
         const URL = `https://api.memegen.link/images/${img}/${res === 'success' ? success_msg : error_msg}.png`;
 
       
-        const new_readme = old_readme + `<img src="${URL}" />`;
+        const new_readme =  `<img src="${URL}" />`;
         
         fs.writeFile('./README.md', new_readme);
         process.exit(0);
