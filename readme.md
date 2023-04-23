@@ -1,1 +1,1 @@
-<img src="https://api.memegen.link/images/sarcasticbear/Oh_no!/Los_tests_no_funcionan_bien.png" />
+{\rtf1}
