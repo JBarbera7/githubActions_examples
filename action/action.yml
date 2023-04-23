@@ -1,15 +1,18 @@
-name: Telegram Message Action
-description: Envia un mensaje a Telegram
 inputs:
-  name:
-    description: 'Nombre a mostrar en el mensaje'
+  frase_positiva:
+    description: 'Positive phrase to be displayed in the meme'
     required: true
-  TELEGRAM_BOT_TOKEN:
-    description: 'Token de Telegram'
+  frase_negativa:
+    description: 'Negative phrase to be displayed in the meme'
     required: true
-  TELEGRAM_CHAT_ID:
-    description: 'ID del chat de Telegram'
+  resultado_tests:
+    description: 'Result of the tests execution'
     required: true
+
+outputs:
+  meme_addition:
+    description: 'Confirmation message that the meme has been added to the README'
+
 runs:
   using: 'node12'
-  main: 'telegram.js'
+  main: 'index.js'
