@@ -8,7 +8,7 @@ async function main() {
         const error_msg = core.getInput('frase_negativa').split(' ').join('_');
         const res = core.getInput('resultado_tests');
 
-        const img = res === 'success' ? 'stonks' : 'rollsafe';
+        const img = res === 'success' ? 'stonks' : 'ugandanknuck';
         const URL = `https://api.memegen.link/images/${img}/${res === 'success' ? success_msg : error_msg}.png`;
 
         const old_readme = await fs.readFile('./OldREADME.md', 'utf8');
