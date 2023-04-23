@@ -13,7 +13,7 @@ async function main() {
       const img = res === 'success' ? 'stonks' : 'sarcasticbear';
       const URL = `https://memegen.link/images/buzz/mocking-buzz.png`;
 
-      const old_readme = await fs.readFile('./OldREADME.md', 'utf8');
+      const old_readme = await fs.readFile('./OldREADME.md');
       const new_readme = old_readme + `<img src="${URL}" />`;
       
       await fs.writeFile('./README.md', new_readme);
