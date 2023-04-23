@@ -6,7 +6,6 @@ on:
 jobs:
  
   build:
-    needs: build
     name: test-execution
     runs-on: ubuntu-latest
     steps:
