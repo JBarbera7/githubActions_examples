@@ -26,7 +26,5 @@ jobs:
       - uses: EndBug/add-and-commit@v9
         with:
           add: "."
-          author_name: "Salva Muñoz Úbeda"
-          author_email: "ubedasalmu@gmail.com"
           message: "Meme updated"
           push: true
