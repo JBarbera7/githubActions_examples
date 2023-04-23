@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "canvas": "^2.11.2",
-    "fs": "^0.0.1-security"
+    "fs": "^0.0.1-security",
+    "meme-generator": "^0.1.0"
   }
 }
