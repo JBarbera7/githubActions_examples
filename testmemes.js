@@ -1,35 +1,68 @@
 const { createCanvas, loadImage } = require('canvas');
 const fs = require('fs');
 
-async function generateMeme(positivePhrase, negativePhrase, testResult) {
-  const canvas = createCanvas(500, 500);
+async function generateMeme(frase, canvasWidth, canvasHeight) {
+  const canvas = createCanvas(canvasWidth, canvasHeight);
   const ctx = canvas.getContext('2d');
 
-  // Cargar la imagen del meme
-  const memeImage = await loadImage('meme.jpg');
-  ctx.drawImage(memeImage, 0, 0, canvas.width, canvas.height);
+  // Load image
+  const image = await loadImage('meme.jpg');
+  ctx.drawImage(image, 0, 0, canvasWidth, canvasHeight);
 
-  // Agregar texto al meme
-  const text = testResult ? positivePhrase : negativePhrase;
-  ctx.font = '30px Impact';
-  ctx.fillStyle = 'white';
+  // Set text properties
+  ctx.font = 'bold 40pt Impact';
+  ctx.fillStyle = '#fff';
+  ctx.strokeStyle = '#000';
+  ctx.lineWidth = 3;
   ctx.textAlign = 'center';
-  ctx.fillText(text, canvas.width / 2, canvas.height / 2);
+  ctx.textBaseline = 'middle';
 
-  // Guardar el meme como archivo JPEG
-  const buffer = canvas.toBuffer('image/jpeg');
-  fs.writeFileSync('meme.jpg', buffer);
+  // Draw text
+  const words = frase.split(' ');
+  let line = '';
+  let y = canvasHeight / 2;
+  for (let n = 0; n < words.length; n++) {
+    const testLine = line + words[n] + ' ';
+    const metrics = ctx.measureText(testLine);
+    const testWidth = metrics.width;
+    if (testWidth > canvasWidth && n > 0) {
+      ctx.strokeText(line, canvasWidth / 2, y);
+      ctx.fillText(line, canvasWidth / 2, y);
+      line = words[n] + ' ';
+      y += 60;
+    } else {
+      line = testLine;
+    }
+  }
+  ctx.strokeText(line, canvasWidth / 2, y);
+  ctx.fillText(line, canvasWidth / 2, y);
 
-  // Leer el archivo README.md
-  const readme = fs.readFileSync('README.md', 'utf8');
-
-  // Agregar el meme al archivo README.md
-  const newReadme = readme + `\n\n![Meme](./meme.jpg)`;
-
-  // Escribir el archivo README.md modificado
-  fs.writeFileSync('README.md', newReadme);
-
-  console.log('Meme añadido al readme2');
+  return canvas.toBuffer();
 }
 
-module.exports = generateMeme;
+async function run() {
+  try {
+    // Get inputs
+    const frasePositiva = process.env.FRASE_POSITIVA;
+    const fraseNegativa = process.env.FRASE_NEGATIVA;
+    const resultadoTests = process.env.RESULTADO_TESTS;
+
+    // Generate meme with positive or negative phrase based on test results
+    const frase = resultadoTests === 'success' ? frasePositiva : fraseNegativa;
+    const memeBuffer = await generateMeme(frase, 600, 400);
+
+    // Read and modify README.md file
+    let readme = fs.readFileSync('README.md', 'utf8');
+    readme += `\n\n![Meme](data:image/jpeg;base64,${memeBuffer.toString('base64')})\n\n`;
+
+    // Write modified README.md file
+    fs.writeFileSync('README.md', readme);
+
+    console.log('Meme añadido al readme');
+  } catch (error) {
+    console.error(error);
+    process.exit(1);
+  }
+}
+
+run();
